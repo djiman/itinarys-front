@@ -1,6 +1,6 @@
 export class LigneDTO {
     nomLigne: string;
     type: string;
-    status:string;
+    statut:string;
     commentaire: string;
 }

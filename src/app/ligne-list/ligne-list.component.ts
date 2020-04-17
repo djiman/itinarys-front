@@ -22,4 +22,8 @@ export class LigneListComponent implements OnInit {
     this.lignes = this.ligneService.getLignes();
   }
 
+  ligneDetails(id: number){
+    this.router.navigate(['details', id]);
+  }
+
 }

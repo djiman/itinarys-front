@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app.routing.module';
 import { AppComponent } from './app.component';
 import { LigneListComponent } from './ligne-list/ligne-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LigneDetailsComponent } from './ligne-details/ligne-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LigneListComponent
+    LigneListComponent,
+    LigneDetailsComponent
   ],
   imports: [
     BrowserModule,

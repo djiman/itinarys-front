@@ -18,6 +18,9 @@
             <td>{{ligne.type}}</td>
             <td>{{ligne.statut}}</td>
             <td>{{ligne.commentaire}}</td>
+            <td>
+              <button (click)="ligneDetails(ligne.nomLigne)" class="btn btn-info" style="margin-left: 10px">Details</button>
+          </td>
           </tr>
         </tbody>
       </table>

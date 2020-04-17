@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class LigneService {
-
+  
   private baseUrl = 'http://localhost:8080/lignes';
 
   constructor(private http: HttpClient) { }
@@ -14,4 +14,9 @@ export class LigneService {
   getLignes(): Observable<any> {
     return this.http.get(`${this.baseUrl}`);
   }
+
+  getLigne(nomLigne: string): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${nomLigne}`);
+  }
+
 }

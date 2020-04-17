@@ -14,6 +14,11 @@
   <div>
     <label><b>Commentaire: </b></label> {{ligne.commentaire}}
   </div>  
+  <div>
+    <tr *ngFor="let gare of ligne.garesDto">
+        <td>{{gare.gare}}</td>
+      </tr>
+  </div>  
 </div>
 
 <br>

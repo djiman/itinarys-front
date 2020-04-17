@@ -24,9 +24,10 @@ export class LigneDetailsComponent implements OnInit {
       
       this.ligneService.getLigne(this.nomLigne)
         .subscribe(data => {
-          console.log(data)
+          console.info(data)
           this.ligne = data;
         }, error => console.log(error));
+        console.info(this.ligne);
     }
 
   list(){

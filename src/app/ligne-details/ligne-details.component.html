@@ -1,5 +1,4 @@
 <h2>Ligne Details</h2> 
-
 <hr/>
 <div *ngIf="ligne">
   <div>
@@ -15,12 +14,23 @@
     <label><b>Commentaire: </b></label> {{ligne.commentaire}}
   </div>  
   <div>
-    <tr *ngFor="let gare of ligne.garesDto">
-        <td>{{gare.gare}}</td>
-      </tr>
+    <svg width="2000" height="130">
+    <g *ngFor="let gare of ligne.garesDto">
+      <line id="Ligne+{{gare.gare}}" [attr.x1]="gare.ordre" [attr.y1]=100 *ngIf="gare.type != 'T'" [attr.x2]="gare.ordre+150" [attr.y2]=100 stroke="red"
+      stroke-width="3" fill="none" />      
+      <!-- Dessiner les arrets -->
+    <g stroke="blue" stroke-width="3" fill="black">
+      <circle id="Point+{{gare.gare}}" [attr.cx]="gare.ordre" cy="100" r="3" />
+    </g>
+    <!-- Ajouter les noms des arrets -->
+    <g font-size="15" font-family="sans-serif" fill="black" stroke="none" stroke-width="6"
+    text-anchor="middle">
+      <text [attr.x]="gare.ordre" y="100" dx="10" dy ="-7">{{gare.gare}}</text>
+    </g>
+    </g>
+    </svg>
   </div>  
 </div>
-
 <br>
 <br>
 <button (click)="list()" class="btn btn-primary">Retour liste lignes</button><br>

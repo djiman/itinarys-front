@@ -23,9 +23,8 @@
       <circle id="Point+{{gare.gare}}" [attr.cx]="gare.ordre" cy="100" r="3" />
     </g>
     <!-- Ajouter les noms des arrets -->
-    <g font-size="15" font-family="sans-serif" fill="black" stroke="none" stroke-width="6"
-    text-anchor="middle">
-      <text [attr.x]="gare.ordre" y="100" dx="10" dy ="-7">{{gare.gare}}</text>
+    <g>
+      <text [attr.x]="gare.ordre" [ngClass]="{'textBold':IsGareDepartOuTerminus(gare.type)}" y="100" dx="-10" dy ="-7">{{gare.gare}}</text>
     </g>
     </g>
     </svg>

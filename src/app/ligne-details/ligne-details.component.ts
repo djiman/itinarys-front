@@ -34,4 +34,8 @@ export class LigneDetailsComponent implements OnInit {
     this.router.navigate(['lignes']);
   }
 
+  public IsGareDepartOuTerminus(gareType) {
+    return (gareType === 'D') || (gareType === 'T');
+  }
+
 }

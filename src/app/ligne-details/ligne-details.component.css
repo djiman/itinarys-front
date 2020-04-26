@@ -2,3 +2,6 @@
     /*  What type of line shall we use, to connect an employee to a Sub-Manager ? */
     font-weight: bold;
   }
+
+  div#typeTransport{float:left;width:50px;} 
+  div#nomLigne{margin-left:100px;}

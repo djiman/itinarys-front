@@ -1,18 +1,11 @@
-<h2>Ligne Details</h2> 
-<hr/>
 <div *ngIf="ligne">
-  <div>
-    <label><b>Nom ligne: </b></label> {{ligne.nomLigne}}
+  <div id="typeTransport">
+    <img *ngIf="ligne.type == 'Train'" src="../assets/images/train.png"/>
+    <img *ngIf="ligne.type == 'Bus'" src="../assets/images/bus.png"/>
   </div>
-  <div>
-    <label><b>Type: </b></label> {{ligne.type}}
+  <div id="nomLigne">
+    {{ligne.nomLigne}}
   </div>
-  <div>
-    <label><b>Statut: </b></label> {{ligne.statut}}
-  </div>  
-  <div>
-    <label><b>Commentaire: </b></label> {{ligne.commentaire}}
-  </div>  
   <div>
     <svg width="2000" height="130">
     <g *ngFor="let gare of ligne.garesDto">

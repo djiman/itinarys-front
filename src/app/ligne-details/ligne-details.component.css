@@ -3,5 +3,11 @@
     font-weight: bold;
   }
 
-  div#typeTransport{float:left;width:50px;} 
-  div#nomLigne{margin-left:100px;}
+  div#typeTransport{
+    float:left;width:50px;
+    margin-left:40px
+  } 
+  div#nomLigne{
+    float:left;width:50px;
+    margin-left:40px;
+  }

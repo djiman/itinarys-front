@@ -24,18 +24,24 @@ export class LigneDetailsComponent implements OnInit {
       
       this.ligneService.getLigne(this.nomLigne)
         .subscribe(data => {
-          console.info(data)
           this.ligne = data;
+          this.computeCoordonneesArrets(this.ligne);
         }, error => console.log(error));
-        console.info(this.ligne);
     }
 
   list(){
     this.router.navigate(['lignes']);
   }
 
-  public IsGareDepartOuTerminus(gareType) {
+  public IsGareDepartOuTerminus(gareType:String) {
     return (gareType === 'D') || (gareType === 'T');
+  }
+
+  public computeCoordonneesArrets(ligne:LigneDTO) {
+    var intervalle:number = 60;
+    ligne.garesDto.forEach(element => {
+      element.coordonnee = element.ordre * intervalle;      
+    });
   }
 
 }

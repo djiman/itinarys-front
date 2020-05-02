@@ -15,7 +15,7 @@
   <div>
     <svg width="2000" height="130">
     <g *ngFor="let gare of ligne.garesDto">
-      <line id="Ligne+{{gare.gare}}" [attr.x1]="gare.coordonnee" [attr.y1]=50 *ngIf="gare.type != 'T'" [attr.x2]="gare.coordonnee+60" [attr.y2]=50 stroke="red"
+      <line [attr.x1]="gare.coordonnee" [attr.y1]=50 *ngIf="gare.type != 'T'" [attr.x2]="gare.coordonnee+60" [attr.y2]=50 stroke="red"
       stroke-width="3" fill="none" />      
       <!-- Dessiner les arrets -->
     <g stroke="#0066ff" stroke-width="3" fill="black">
@@ -23,7 +23,7 @@
     </g>
     <!-- Ajouter les noms des arrets -->
     <g>
-      <text [attr.x]="gare.coordonnee" [ngClass]="{'textBold':IsGareDepartOuTerminus(gare.type)}" y="50" dx="-10" dy ="-7">{{gare.gare}}</text>
+      <text [attr.x]="gare.coordonnee" [attr.y]=50 dx="-10" dy ="-7" [ngClass]="{'textBold':IsGareDepartOuTerminus(gare.type)}">{{gare.gare}}</text>
     </g>
     </g>
     </svg>

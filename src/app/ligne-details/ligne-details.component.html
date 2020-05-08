@@ -21,10 +21,10 @@
     <g stroke="#0066ff" stroke-width="3" fill="black">
       <circle [attr.cx]="gare.coordonnee" cy="50" r="3" />
     </g>
-    
+
     <!-- Ajouter les noms des arrets -->
     <g>
-      <text id = "Gare.gare.nom" [attr.x]="gare.coordonnee" [attr.y]=50 dx=-10 dy=-7 [attr.transform]="'rotate(-30, '+gare.coordonnee+',50)'" [ngClass]="{'textBold':IsGareDepartOuTerminus(gare.type)}">
+      <text [attr.x]="gare.coordonnee" [attr.y]=50 dx=-10 dy=-7 [attr.transform]="'rotate(-30, '+gare.coordonnee+',50)'" [ngClass]="{'textBold':IsGareDepartOuTerminus(gare.type)}">
         {{gare.gare}}
       </text>
     </g>

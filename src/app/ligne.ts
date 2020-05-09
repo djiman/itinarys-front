@@ -6,4 +6,5 @@ export class LigneDTO {
     statut:string;
     commentaire: string;
     garesDto:Array<GareDTO>;
+    intervalleArret:number;
 }

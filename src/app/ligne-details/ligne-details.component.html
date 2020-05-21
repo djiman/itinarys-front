@@ -1,5 +1,4 @@
-<div id ="ligne" *ngIf="ligne">
-  
+<div id ="ligneDiv" *ngIf="ligne" #ligneDiv>
   <div id="typeTransport">
     <img *ngIf="ligne.type == 'Train'" src="../assets/images/train.png"/>
     <img *ngIf="ligne.type == 'Bus'" src="../assets/images/bus.png"/>
@@ -37,4 +36,9 @@
   </div>  
 </div>
 <br>
-<button (click)="list()" class="btn btn-primary">Retour liste lignes</button>
+<table>
+  <tr>
+  <td style="padding-right:50px"><button (click)="list()" class="btn btn-primary">Retour</button></td>
+  <td><button  (click)="downloadAsPDF()" class="btn btn-primary">Imprimer</button></td>
+</tr>
+</table>

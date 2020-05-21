@@ -1,8 +1,10 @@
 import { LigneDTO } from '../ligne';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { LigneService } from '../ligne.service';
 import { LigneListComponent } from '../ligne-list/ligne-list.component';
 import { Router, ActivatedRoute } from '@angular/router';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas'; 
 
 @Component({
   selector: 'app-ligne-details',
@@ -27,6 +29,7 @@ export class LigneDetailsComponent implements OnInit {
           this.ligne = data;
           this.computeCoordonneesArrets(this.ligne);
         }, error => console.log(error));
+        
     }
 
   list(){
@@ -45,5 +48,23 @@ export class LigneDetailsComponent implements OnInit {
     });
     ligne.intervalleArret = intervalle;
   }
+  
+  public downloadAsPDF() {
+   
+    var data = document.getElementById('ligneDiv');  //Id of the table
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      let imgWidth = 400;   
+      let pageHeight = 400;    
+      let imgHeight = canvas.height * imgWidth / canvas.width;  
+      let heightLeft = imgHeight;  
 
+      const contentDataURL = canvas.toDataURL('image/png')  
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
+      let position = 50;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save(this.nomLigne+'.pdf'); 
+    });  
+
+}
 }

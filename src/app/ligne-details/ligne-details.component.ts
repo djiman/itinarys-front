@@ -53,16 +53,9 @@ export class LigneDetailsComponent implements OnInit {
    
     var data = document.getElementById('ligneDiv');  //Id of the table
     html2canvas(data).then(canvas => {  
-      // Few necessary setting options  
-      let imgWidth = 400;   
-      let pageHeight = 400;    
-      let imgHeight = canvas.height * imgWidth / canvas.width;  
-      let heightLeft = imgHeight;  
-
       const contentDataURL = canvas.toDataURL('image/png')  
-      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF  
-      let position = 50;  
-      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF     
+      pdf.addImage(contentDataURL, 'PNG', 0, 0, 500, 100)  
       pdf.save(this.nomLigne+'.pdf'); 
     });  
 

@@ -7,6 +7,7 @@ import { LigneListComponent } from './ligne-list/ligne-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LigneDetailsComponent } from './ligne-details/ligne-details.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

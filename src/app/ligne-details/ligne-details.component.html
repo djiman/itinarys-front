@@ -1,7 +1,7 @@
 <div id ="ligneDiv" *ngIf="ligne" #ligneDiv>
   <div id="typeTransport">
-    <img *ngIf="ligne.type == 'Train'" src="../assets/images/train.png"/>
-    <img *ngIf="ligne.type == 'Bus'" src="../assets/images/bus.png"/>
+    <mat-icon *ngIf="ligne.type == 'Train'">train</mat-icon>   
+    <mat-icon *ngIf="ligne.type == 'Bus'">directions_bus</mat-icon>
   </div>
   <div id="nomLigne">
     <svg>

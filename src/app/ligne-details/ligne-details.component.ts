@@ -50,14 +50,38 @@ export class LigneDetailsComponent implements OnInit {
   }
   
   public downloadAsPDF() {
-   
-    var data = document.getElementById('ligneDiv');  //Id of the table
-    html2canvas(data).then(canvas => {  
-      const contentDataURL = canvas.toDataURL('image/png')  
-      let pdf = new jsPDF('p', 'mm', 'a4'); // A4 size page of PDF     
-      pdf.addImage(contentDataURL, 'PNG', 0, 0, 500, 100)  
-      pdf.save(this.nomLigne+'.pdf'); 
-    });  
+    
+    const element = document.getElementById('ligneDiv'),
+        options = {
+            imageTimeout: 2000,
+            background: "white",
+            allowTaint : true,
+            useCORS: false,
+            height: element.clientHeight,
+            width: element.clientWidth
+       };
+    
+       html2canvas(element, options).then((canvas) => {
+        let imgData = canvas.toDataURL('image/png');
+
+        let imgWidth = 210,
+            pageHeight = 295,
+            imgHeight = canvas.height * imgWidth / canvas.width,
+            heightLeft = imgHeight,
+            doc = new jsPDF('l', 'mm'),
+            position = 50;
+
+        doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+        heightLeft -= pageHeight;
+
+        while (heightLeft >= 0) {
+            position = heightLeft - imgHeight;
+            doc.addPage();
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+        }
+        doc.save(this.nomLigne+'.pdf'); 
+    });
 
 }
 }

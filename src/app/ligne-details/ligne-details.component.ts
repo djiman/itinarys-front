@@ -42,7 +42,7 @@ export class LigneDetailsComponent implements OnInit {
 
   public computeCoordonneesArrets(ligne:LigneDTO) {
     /** Variabliser les intervalles en fonction du nombre de gares */
-    var intervalle:number = 40;
+    var intervalle:number = 80;
     ligne.garesDto.forEach(element => {
       element.coordonnee = element.ordre * intervalle;      
     });

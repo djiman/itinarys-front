@@ -6,9 +6,9 @@
   <div id="nomLigne">
     <svg>
       <g>
-        <circle style="fill:url(#toning);stroke:#0066ff;stroke-width:5;stroke-miterlimit:10;" cx="40" cy="40" r="25">
+        <circle [attr.stroke]="ligne.couleur" style="fill:url(#toning);stroke-width:5;stroke-miterlimit:10;" cx="40" cy="40" r="25">
         </circle>
-        <text x=40 y=40 text-anchor="middle" stroke="#0066ff" stroke-width="1px" dy=".3em">{{ligne.nomLigne}}</text>
+        <text x=40 y=40 text-anchor="middle" [attr.stroke]="ligne.couleur" stroke-width="1px" dy=".3em">{{ligne.nomLigne}}</text>
       </g>
     </svg>
   </div>
@@ -16,21 +16,21 @@
   <div>
     <svg width="2000" height="200">
     <g *ngFor="let gare of ligne.garesDto">
-      <line [attr.x1]="gare.coordonnee" [attr.y1]=130 *ngIf="gare.type != 'T'" [attr.x2]="gare.coordonnee+ligne.intervalleArret" [attr.y2]=130 
-      stroke="red" stroke-width="5" fill="none" stroke-opacity="2" fill-opacity="2"/>      
+      <line [attr.x1]="gare.coordonnee" [attr.y1]=160 *ngIf="gare.type != 'T'" [attr.x2]="gare.coordonnee+ligne.intervalleArret" [attr.y2]=160 
+      [attr.stroke]="ligne.couleur" stroke-width="5" fill="none" stroke-opacity="2" fill-opacity="2"/>      
       
     <!-- Dessiner les arrets -->
     <g>
-      <circle *ngIf= "!IsGareDepartOuTerminus(gare.type)" style="stroke:#0066ff;stroke-width:5;" [attr.cx]="gare.coordonnee" cy="130" r="3" />
-      <circle *ngIf= "IsGareDepartOuTerminus(gare.type)" style="stroke:black;stroke-width:5;" [attr.cx]="gare.coordonnee" cy="130" r="3" />
+      <circle *ngIf= "!IsGareDepartOuTerminus(gare.type)" [attr.stroke]="ligne.couleur" style="stroke-width:7;" [attr.cx]="gare.coordonnee" cy="160" r="3" />
+      <circle *ngIf= "IsGareDepartOuTerminus(gare.type)" style="stroke:black;stroke-width:7;" [attr.cx]="gare.coordonnee" cy="160" r="3" />
     </g>
 
     <!-- Ajouter les noms des arrets -->
     <g>
-      <text *ngIf= "!IsGareDepartOuTerminus(gare.type)" [attr.x]="gare.coordonnee" [attr.y]=130 dx=-3 dy=-12 [attr.transform]="'rotate(-50, '+gare.coordonnee+',130)'">
+      <text *ngIf= "!IsGareDepartOuTerminus(gare.type)" [attr.x]="gare.coordonnee" [attr.y]=160 dx=-3 dy=-12 [attr.transform]="'rotate(-50, '+gare.coordonnee+',160)'">
         {{gare.gare}}
       </text>
-      <text *ngIf= "IsGareDepartOuTerminus(gare.type)" [attr.x]="gare.coordonnee" [attr.y]=130 dx=-3 dy=-12 [attr.transform]="'rotate(-50, '+gare.coordonnee+',130)'" style="font-weight: bold;">
+      <text *ngIf= "IsGareDepartOuTerminus(gare.type)" [attr.x]="gare.coordonnee" [attr.y]=160 dx=-3 dy=-12 [attr.transform]="'rotate(-50, '+gare.coordonnee+',160)'" style="font-weight: bold;">
         {{gare.gare}}
       </text>
     </g>

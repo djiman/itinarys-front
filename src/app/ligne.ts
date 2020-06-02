@@ -5,6 +5,7 @@ export class LigneDTO {
     type: string;
     statut:string;
     commentaire: string;
+    couleur:string;
     garesDto:Array<GareDTO>;
     intervalleArret:number;
 }

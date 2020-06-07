@@ -1,0 +1,51 @@
+.listeLigneSpan {
+    color:black;
+    font-weight:bold;
+    font-size: small;
+}
+.divListeLigne {
+    height: 30%;
+    width: 50%;
+    margin-left: 60px;
+    background-color:#03d3fc;
+    border:1px solid #9FC6FF;
+    padding:5px;
+    float: left;
+    /*arrondir les coins en haut à gauche et en bas à droite*/
+    -moz-border-radius:10px 10px 0 0;
+    -webkit-border-radius:10px 10px 0 0;
+    border-radius:10px 10px 0 0;
+}
+
+.divLigne{
+    background-color: beige;
+    margin-left: 60px;
+    float: left;
+    height: 30%;
+    width: 50%;
+}
+
+.container {
+    height: 50%;
+    width: 400px;
+    margin-left: 20px;
+    padding:5px;
+    float: left;
+}
+.first {
+    width: 20%;
+    float: left;
+    height: 60px;
+    background-color: beige;    
+}
+.second {
+    text-align: left;
+    vertical-align: middle;
+    line-height: 60px;
+    width: 50%;
+    float: left;
+    height: 60px;
+    background-color: beige;
+}
+
+a.menu_links { cursor: pointer; }

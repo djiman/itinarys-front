@@ -1,28 +1,28 @@
 <div class="panel panel-primary">
-    <div class="panel-heading">
-      <h2>Liste des lignes</h2>
+  <div class="panel-body">
+    <div class="divListeLigne">
+      <span class = "listeLigneSpan">Toutes les lignes</span>
     </div>
-    <div class="panel-body">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>Nom Ligne</th>
-            <th>Type</th>
-            <th>Statut</th>
-            <th>Commentaire</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let ligne of lignes | async">
-            <td>{{ligne.nomLigne}}</td>
-            <td>{{ligne.type}}</td>
-            <td>{{ligne.statut}}</td>
-            <td>{{ligne.commentaire}}</td>
-            <td>
-              <button (click)="ligneDetails(ligne.nomLigne)" class="btn btn-info" style="margin-left: 10px">Details</button>
-          </td>
-          </tr>
-        </tbody>
-      </table>
+    <div class="divLigne" *ngFor="let ligne of lignes | async">
+      <div>
+        <a (click)="ligneDetails(ligne.nomLigne)" onmouseover="" style="cursor: pointer;">
+            <div class="container">
+              <div class="first">
+                <svg width="60" height="60">
+                  <g>
+                    <circle [attr.stroke]="ligne.couleur" style="fill:url(#toning);stroke-width:5;stroke-miterlimit:10;" cx="30" cy="30" r="20">
+                    </circle>
+                    <text x=30 y=30 text-anchor="middle" [attr.stroke]="ligne.couleur" stroke-width="1px" dy=".3em">{{ligne.nomLigne}}</text>
+                  </g>
+                </svg>
+              </div>
+              <div class="second">
+                <span>{{ligne.commentaire}}</span>
+              </div>
+            </div>
+        </a>
+      </div>
     </div>
   </div>
+</div>
+

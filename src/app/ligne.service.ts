@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class LigneService {
   
-  private baseUrl = 'http://52.47.36.15:8080/lignes';
-  /*private baseUrl = 'http://localhost:8080/lignes';*/
+  private baseUrl = 'http://52.47.36.15:8083/lignes';
+  /*private baseUrl = 'http://localhost:8083/lignes';*/
 
   constructor(private http: HttpClient) { }
 

@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from "../environments/environment"
 
 @Injectable({
   providedIn: 'root'
 })
 export class LigneService {
   
-  private baseUrl = 'http://52.47.36.15:8083/lignes';
-  /*private baseUrl = 'http://localhost:8083/lignes';*/
-
+  private baseUrl = environment.baseUrl;
   constructor(private http: HttpClient) { }
 
   getLignes(): Observable<any> {

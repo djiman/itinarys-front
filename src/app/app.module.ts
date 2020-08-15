@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { LigneDetailsComponent } from './ligne-details/ligne-details.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MatIconModule } from '@angular/material/icon';
     FormsModule,
     HttpClientModule,
     NoopAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]

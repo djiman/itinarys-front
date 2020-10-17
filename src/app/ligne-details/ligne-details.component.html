@@ -33,8 +33,18 @@
       <text *ngIf= "IsGareDepartOuTerminus(gare.type)" [attr.x]="gare.coordonnee" [attr.y]=160 dx=-3 dy=-12 [attr.transform]="'rotate(-50, '+gare.coordonnee+',160)'" style="font-weight: bold;">
         {{gare.gare}}
       </text>
+      
+      <!-- Ajouter les correspondances -->
+      <g *ngFor="let link of gare.links">
+        <g *ngIf="!IsGareWithLinks(link) && !IsNotSameLigne(link.nomLigne,ligne.nomLigne)">
+          <line [attr.x1]="gare.coordonnee" [attr.y1]=165 [attr.x2]="gare.coordonnee" [attr.y2]=180 
+            stroke="black" stroke-width="1" fill="none" stroke-opacity="1" fill-opacity="1"/>     
+          <circle [attr.stroke]="link.couleur" [attr.cx]="link.coordonnee" [attr.cy]=190 style="fill:url(#toning);stroke-width:1;stroke-miterlimit:10;" r="8"></circle>
+          <text [attr.x]=link.coordonnee [attr.y]=190 text-anchor="middle" font-size="8" [attr.stroke]="link.couleur" stroke-width="1px" dy=".3em">{{link.nomLigne}}</text>
+        </g>
+      </g>
     </g>
-    
+
   </g>
     </svg>
   </div>  

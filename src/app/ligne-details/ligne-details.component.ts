@@ -28,6 +28,7 @@ export class LigneDetailsComponent implements OnInit {
         .subscribe(data => {
           this.ligne = data;
           this.computeCoordonneesArrets(this.ligne);
+          this.computeCoordonneesLinks(this.ligne);
         }, error => console.log(error));
         
     }
@@ -40,13 +41,39 @@ export class LigneDetailsComponent implements OnInit {
     return (gareType === 'D') || (gareType === 'T');
   }
 
+  public IsGareWithLinks(links:String) {
+    return (links === null);
+  }
+
+  public IsNotSameLigne(nomLigneLink:String, nomLigne:String) {
+    return (nomLigneLink === nomLigne);
+  }
+
   public computeCoordonneesArrets(ligne:LigneDTO) {
     /** Variabliser les intervalles en fonction du nombre de gares */
-    var intervalle:number = 40;
+    var intervalle:number = 50;
     ligne.garesDto.forEach(element => {
-      element.coordonnee = element.ordre * intervalle;      
+      element.coordonnee = element.ordre * intervalle;     
     });
     ligne.intervalleArret = intervalle;
+  }
+
+  public computeCoordonneesLinks(ligne:LigneDTO) {
+    ligne.garesDto.forEach(element => {
+      var intervalleLink:number = 0;
+      if(element.links != null) {
+      element.links.forEach(link => {
+        link.coordonnee = 0;
+        });
+      element.links.forEach(link => {
+        //On ne met pas la correspondance sur la meme ligne
+        if(link.nomLigne != ligne.nomLigne) {
+          link.coordonnee = element.coordonnee + intervalleLink;
+          intervalleLink = intervalleLink + 18;
+          }
+        });
+      }
+    });
   }
   
   public downloadAsPDF() {

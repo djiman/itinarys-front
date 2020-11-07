@@ -28,7 +28,7 @@ export class LigneDetailsComponent implements OnInit {
         .subscribe(data => {
           this.ligne = data;
           this.computeCoordonneesArrets(this.ligne);
-          this.computeCoordonneesLinks(this.ligne);
+          this.computeCoordonneesAndOrdresLinks(this.ligne);
         }, error => console.log(error));
         
     }
@@ -58,21 +58,44 @@ export class LigneDetailsComponent implements OnInit {
     ligne.intervalleArret = intervalle;
   }
 
-  public computeCoordonneesLinks(ligne:LigneDTO) {
+  public computeCoordonneesAndOrdresLinks(ligne:LigneDTO) {
     ligne.garesDto.forEach(element => {
-      var intervalleLink:number = 0;
-      if(element.links != null) {
-      element.links.forEach(link => {
+      var intervalleLinkBus:number = 0;
+      //Correspondances de type Bus
+      if(element.linksBus != null) {
+      element.linksBus.forEach(link => {
         link.coordonnee = 0;
         });
-      element.links.forEach(link => {
+      var indexOrdreBus:number = 1;
+      element.linksBus.forEach(link => {
         //On ne met pas la correspondance sur la meme ligne
         if(link.nomLigne != ligne.nomLigne) {
-          link.coordonnee = element.coordonnee + intervalleLink;
-          intervalleLink = intervalleLink + 18;
+          link.coordonnee = element.coordonnee + intervalleLinkBus;
+          intervalleLinkBus = intervalleLinkBus + 17;
+          link.ordre = indexOrdreBus;
+          indexOrdreBus = indexOrdreBus + 1;
+          link.couleurlink="#6050dc";
           }
         });
       }
+
+      //Correspondances de type Ter
+      var intervalleLinkTer:number = 0;
+      if(element.linksTrain != null) {
+        element.linksTrain.forEach(link => {
+          link.coordonnee = 0;
+          });
+        var indexOrdreTer:number = 1;
+        element.linksTrain.forEach(link => {        
+          if(link.nomLigne != ligne.nomLigne) {
+            link.coordonnee = element.coordonnee + intervalleLinkTer;
+            intervalleLinkTer = intervalleLinkTer + 17;
+            link.ordre = indexOrdreTer;
+            indexOrdreTer = indexOrdreTer + 1;
+            link.couleurlink="#6050dc";
+            }
+          });
+        }
     });
   }
   

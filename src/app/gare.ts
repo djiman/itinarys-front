@@ -5,5 +5,6 @@ export class GareDTO {
     ordre: number;
     coordonnee: number;
     type:string;
-    links:Array<LinkDTO>;
+    linksBus:Array<LinkDTO>;
+    linksTrain:Array<LinkDTO>;
 }
